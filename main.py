@@ -7,8 +7,8 @@ GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
 WORK_MIN = 1
-SHORT_BREAK_MIN = 5
-LONG_BREAK_MIN = 20
+SHORT_BREAK_MIN = 1
+LONG_BREAK_MIN = 1
 check = 1
 time_counter = ""
 # ---------------------------- TIMER RESET ------------------------------- # 
@@ -65,15 +65,17 @@ def start_timer():
     global check
     if check % 2 == 0 and check != 8:
         count(SHORT_BREAK_MIN * 60)
-        timer.config(text="SHORT BREAK", fg=YELLOW)
+        print("time to rest")
+        timer.config(text="SHORT BREAK", fg=PINK)
         check += 1
     elif check % 2 != 0:
         count(WORK_MIN * 60)
+        print("time to work")
         timer.config(text="WORK", fg=RED)
         check += 1
     else:
         count(LONG_BREAK_MIN * 60)
-
+        print("time for long break")
         timer.config(text="LONG BREAK BREAK", fg=GREEN)
         check += 1
 
